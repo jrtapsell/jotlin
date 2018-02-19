@@ -6,12 +6,15 @@
 
   Converts anything to an integer
   
-    > "1".i() + "3".i()
-    < 4
+      > "1".i() + "3".i()
+      < 4
     
 - Any.s()
 
   Converts anything to a string
+  
+      > 1.s()
+      < "1"
   
 ## IO
 
@@ -41,6 +44,10 @@
 - j()
 
   Joins the items to a string
+  
+- g()
+
+  Shortening of generateSequence
   
 - _s()
 

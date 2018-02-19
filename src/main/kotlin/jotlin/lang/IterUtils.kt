@@ -23,3 +23,6 @@ fun <T> Array<T>._i() = asIterable()
 
 inline fun <reified T> Sequence<T>._a() = toList().toTypedArray()
 inline fun <reified T> Iterable<T>._a() = toList().toTypedArray()
+
+fun <T: Any> g(nextFun: () -> T) = generateSequence(nextFun)
+fun <T: Any> g(seed: T, nextFun: (T) -> T) = generateSequence(seed, nextFun)
