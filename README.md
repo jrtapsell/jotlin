@@ -12,6 +12,9 @@ This language uses logic to try to shorten kotlin code.
 
 To avoid falling foul of the custom language for a challenge rule we avoid making builtins for specific challenges.
 
+## Can this be used for old questions
+
+According to [this](https://codegolf.meta.stackexchange.com/a/7011/73772), yes.
 ## Raw data
 
 Based on data dumps the following are the most used methods
@@ -35,4 +38,3 @@ Based on data dumps the following are the most used methods
 - filter - 16 uses
 - joinToString - 16 uses
 - repeat - 15 uses
-
