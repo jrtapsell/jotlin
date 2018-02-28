@@ -7,4 +7,4 @@ cat - >> script.kts
 
 source /root/.sdkman/bin/sdkman-init.sh
 
-kotlinc -script script.kts -cp . -include-runtime -d app.jar
+kotlinc -cp app.jar -include-runtime -jvm-target 1.8 -script script.kts -nowarn
