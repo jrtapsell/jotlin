@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Jotlin Tests">
+    <test name="Operator Tests">
+        <classes>
+            <class name="jotlin.lang.AnyUtilsTest"/>
+            <class name="jotlin.lang.IOUtilsTest"/>
+        </classes>
+    </test>
+</suite>

@@ -1,35 +1,30 @@
+package jotlin.lang
+
 import java.util.Base64
 import java.io.ByteArrayOutputStream
-import java.util.zip.Deflater
+import java.util.zip.Inflater
 
 /** Prints whatever is passed to it, followed by a newline. */
-fun Any.P(data: Any?) = println(this)
+fun P(data: Any?) = println(data)
 
-/** Prints multiple items as a list, followed by a newline. */
-fun P(vararg data: Any?) = println(data.asList())
+/** Prints multiple items. */
+fun P(vararg data: Any?) = println(data.j(","))
 
 /** Prints whatever is passed to it *without* a newline. */
 fun Any.p(data: Any?) = print(this)
-/** Prints multiple items as a list *without* a newline. */
-fun p(vararg data: Any?) = print(data.asList())
+/** Prints multiple items *without* a newline. */
+fun p(vararg data: Any?) = print(data.j(","))
 
 /** Deflates input as a Base64 encoded input. */
 fun d(input: String): String {
-    val deflater = Deflater(9)
+    val deflater = Inflater()
     deflater.setInput(Base64.getDecoder().decode(input))
-    deflater.finish()
-    val buffer = ByteArray(1000)
+    val buffer = ByteArray(1024)
     val outputStream = ByteArrayOutputStream()
     while (!deflater.finished()) {
-        val count = deflater.deflate(buffer)
+        val count = deflater.inflate(buffer)
         outputStream.write(buffer, 0, count)
     }
-    val size = deflater.totalOut
-    val temp = ByteArray(size - 6)
-    /*
-     Java gives a header, which nothing else likes.
-
-     https://stackoverflow.com/a/5698317/8041461
-    */
-    return String(temp, 2, size-6)
+    val temp = outputStream.toByteArray()
+    return String(temp)
 }
