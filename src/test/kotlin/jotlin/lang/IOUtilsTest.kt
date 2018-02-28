@@ -15,24 +15,38 @@ class IOUtilsTest {
     }
 
     @Test
-    fun P1() {
-        val output = getStdOut {
+    fun P() {
+        val singleItem = getStdOut {
             P("Hello World")
         }
 
-        assert(output)
+        assert(singleItem)
             .equalsValue("Hello World\n")
+            .assert("P did not give right value")
+        val multipleItems = getStdOut {
+            P("a", "b", "c")
+        }
+
+        assert(multipleItems)
+            .equalsValue("a,b,c\n")
             .assert("P did not give right value")
     }
 
     @Test
-    fun P2() {
-        val output = getStdOut {
-            P("a", "b", "c")
+    fun p() {
+        val singleItem = getStdOut {
+            p("Hello World")
         }
 
-        assert(output)
-            .equalsValue("a,b,c\n")
-            .assert("P did not give right value")
+        assert(singleItem)
+            .equalsValue("Hello World")
+            .assert("p did not give right value")
+        val multipleItems = getStdOut {
+            p("a", "b", "c")
+        }
+
+        assert(multipleItems)
+            .equalsValue("a,b,c")
+            .assert("p did not give right value")
     }
 }

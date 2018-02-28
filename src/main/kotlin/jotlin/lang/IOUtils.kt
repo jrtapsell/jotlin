@@ -11,7 +11,7 @@ fun P(data: Any?) = println(data)
 fun P(vararg data: Any?) = println(data.j(","))
 
 /** Prints whatever is passed to it *without* a newline. */
-fun Any.p(data: Any?) = print(this)
+fun p(data: Any?) = print(data)
 /** Prints multiple items *without* a newline. */
 fun p(vararg data: Any?) = print(data.j(","))
 
