@@ -23,6 +23,9 @@ To run code in a file called `test.jt`:
     cat test.jt | docker run --rm -i jrtapsell/jotlin
 
 
+## Documentation
+
+A list of builtins is available [here](https://docs.google.com/spreadsheets/d/1QeGMf1UGDnVn-SpvPvOHDOxRXj-RipUKSovctsaU-CM/edit?usp=sharing).
 ## Raw data
 
 Based on data dumps the following are the most used methods

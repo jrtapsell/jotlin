@@ -1,4 +1,8 @@
 package jotlin.lang
+
+import jotlin.lang.utils.ScopedMonoBlock
+import jotlin.lang.utils.consume
+
 /**
  * Converts to an Integer.
  *
@@ -25,6 +29,7 @@ fun Any?.s() = toString()
  *      < 2
  */
 fun Int.s(radix: Int=10) = toString(radix)
+
 /**
  * Allows for the radix of s() to be set.
  *
@@ -34,3 +39,5 @@ fun Int.s(radix: Int=10) = toString(radix)
  *      < 2
  */
 fun Long.s(radix: Int=10) = toString(radix)
+
+fun <T,U> T.l(block:ScopedMonoBlock<T, U>) = let(consume(block))
