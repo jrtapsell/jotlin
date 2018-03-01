@@ -20,7 +20,7 @@ According to [this](https://codegolf.meta.stackexchange.com/a/7011/73772), yes.
 
 To run code in a file called `test.jt`:
 
-    cat test.jt | docker run -i jrtapsell/jotlin
+    cat test.jt | docker run --rm -i jrtapsell/jotlin
 
 
 ## Raw data
