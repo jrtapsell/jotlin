@@ -5,6 +5,7 @@
         <classes>
             <class name="jotlin.lang.AnyUtilsTest"/>
             <class name="jotlin.lang.IOUtilsTest"/>
+            <class name="jotlin.lang.IterUtilsTest"/>
             <class name="jotlin.lang.StringUtilsTest"/>
         </classes>
     </test>

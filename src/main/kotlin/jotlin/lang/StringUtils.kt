@@ -12,7 +12,6 @@ fun String.r(find: String, replace: String) = replace(find, replace)
 /** Replaces the given regex with the given substitution. */
 fun String.r(find: Regex, block:(MatchResult)->CharSequence) = replace(find, block)
 
-
 operator fun String.invoke(l: Int=0, r:Int=-1, s: Int=1): String {
     fun fix(index: Int): Int {
         if (index < 0) {
@@ -30,3 +29,9 @@ operator fun String.invoke(l: Int=0, r:Int=-1, s: Int=1): String {
     }
     return range.joinToString(""){this[it].toString()}
 }
+
+val String.l
+    get() = toLowerCase()
+
+val String.u
+    get() = toUpperCase()

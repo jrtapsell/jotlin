@@ -22,4 +22,11 @@ class IterUtilsTest {
             .equalsValue(listOf("a", "b", "c"))
             .assert("Skipping the last")
     }
+
+    @Test
+    fun w() {
+        assert(l(1,2,3,4,5).w(3))
+            .equalsValue(l(l(1,2,3), l(2,3,4), l(3,4,5)))
+            .assert("Testing window function")
+    }
 }
