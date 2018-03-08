@@ -41,3 +41,5 @@ fun Int.s(radix: Int=10) = toString(radix)
 fun Long.s(radix: Int=10) = toString(radix)
 
 fun <T,U> T.l(block:ScopedMonoBlock<T, U>) = let(consume(block))
+
+fun <T, U> U.W(block: ScopedMonoBlock<U, T>) = consume(block)(this)

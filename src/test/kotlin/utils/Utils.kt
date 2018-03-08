@@ -9,6 +9,10 @@ class NewAssertion<T>(val value: T) {
     fun equalsValue(expected: T): Assertion {
         return Assertion { message -> Assert.assertEquals(value, expected, message) }
     }
+
+    fun isValue(expected: T): Assertion {
+        return Assertion { message -> Assert.assertSame(value, expected, message)}
+    }
 }
 
 fun <T> assert(data: T): NewAssertion<T> = NewAssertion(data)

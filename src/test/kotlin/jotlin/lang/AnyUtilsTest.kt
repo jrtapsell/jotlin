@@ -54,4 +54,14 @@ class AnyUtilsTest {
             .equalsValue(100)
             .assert("Let did not work")
     }
+
+    @Test
+    fun W() {
+        val x = 100
+        x.W{
+            assert(a)
+                .equalsValue(x)
+                .assert("With gave wrong value")
+        }
+    }
 }
