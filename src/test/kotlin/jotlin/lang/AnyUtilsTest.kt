@@ -44,4 +44,14 @@ class AnyUtilsTest {
                 .assert("Long conversion failed")
         }
     }
+
+    @Test
+    fun l() {
+        var x=0
+        val i = 100
+        i.l { x = a }
+        assert(x)
+            .equalsValue(100)
+            .assert("Let did not work")
+    }
 }

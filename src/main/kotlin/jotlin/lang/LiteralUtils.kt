@@ -4,4 +4,4 @@ package jotlin.lang
 fun <T> l(vararg items: T) = mutableListOf(*items)
 
 /** Creates an array. */
-fun <T> a(vararg items: T) = items
+inline fun <reified T> a(vararg items: T) = items.map { it }.toTypedArray()

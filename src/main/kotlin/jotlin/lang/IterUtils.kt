@@ -7,48 +7,28 @@ import jotlin.lang.utils.ScopedMonoBlock
 import jotlin.lang.utils.ScopedTripleBlock
 import jotlin.lang.utils.consume
 
-/** Acts as a shortened map. */
-infix fun <T,R> Iterable<T>.m(transform: ScopedMonoBlock<T, R>) = map(consume(transform))
-/** Acts as a shortened map. */
-infix fun <T,R> Sequence<T>.m(transform: ScopedMonoBlock<T, R>) = map(consume(transform))
-/** Acts as a shortened map. */
-infix fun <T,R> Array<T>.m(transform: ScopedMonoBlock<T, R>) = map(consume(transform))
+typealias L<T> = MutableList<T>
 
 /** Acts as a shortened indexed map. */
-infix fun <T,R> Iterable<T>.M(transform: ScopedDualBlock<Int, T, R>) = mapIndexed(consume(transform))
+infix fun <T,R> Iterable<T>.m(transform: ScopedDualBlock<Int, T, R>) = mapIndexed(consume(transform))
 /** Acts as a shortened indexed map. */
-infix fun <T,R> Sequence<T>.M(transform: ScopedDualBlock<Int, T, R>) = mapIndexed(consume(transform))
+infix fun <T,R> Sequence<T>.m(transform: ScopedDualBlock<Int, T, R>) = mapIndexed(consume(transform))
 /** Acts as a shortened indexed map. */
-infix fun <T,R> Array<T>.M(transform: ScopedDualBlock<Int, T, R>) = mapIndexed(consume(transform))
-
-/** Acts as a shortened filter. */
-infix fun <T> Iterable<T>.f(transform: ScopedMonoBlock<T, Boolean>) = filter(consume(transform))
-/** Acts as a shortened filter. */
-infix fun <T> Sequence<T>.f(transform: ScopedMonoBlock<T, Boolean>) = filter(consume(transform))
-/** Acts as a shortened filter. */
-infix fun <T> Array<T>.f(transform: ScopedMonoBlock<T, Boolean>) = filter(consume(transform))
+infix fun <T,R> Array<T>.m(transform: ScopedDualBlock<Int, T, R>) = mapIndexed(consume(transform))
 
 /** Acts as a shortened indexed filter. */
-infix fun <T> Iterable<T>.g(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform))
+infix fun <T> Iterable<T>.f(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform))
 /** Acts as a shortened indexed filter. */
-infix fun <T> Sequence<T>.g(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform))
+infix fun <T> Sequence<T>.f(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform))
 /** Acts as a shortened indexed filter. */
-infix fun <T> Array<T>.g(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform))
-
-
-/** Acts as a shortened fold. */
-fun <T,U> Iterable<T>.F(seed: U, transform: ScopedDualBlock<U, T, U>) = fold(seed, consume(transform))
-/** Acts as a shortened fold. */
-fun <T,U> Sequence<T>.F(seed: U, transform: ScopedDualBlock<U, T, U>) = fold(seed, consume(transform))
-/** Acts as a shortened fold. */
-fun <T,U> Array<T>.F(seed: U, transform: ScopedDualBlock<U, T, U>) = fold(seed, consume(transform))
+infix fun <T> Array<T>.f(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform))
 
 /** Acts as a shortened indexed fold. */
-fun <T,U> Iterable<T>.G(seed: U, transform: ScopedTripleBlock<Int, U, T, U>) = foldIndexed(seed, consume(transform))
+fun <T,U> Iterable<T>.F(seed: U, transform: ScopedTripleBlock<Int, U, T, U>) = foldIndexed(seed, consume(transform))
 /** Acts as a shortened indexed fold. */
-fun <T,U> Sequence<T>.G(seed: U, transform: ScopedTripleBlock<Int, U, T, U>) = foldIndexed(seed, consume(transform))
+fun <T,U> Sequence<T>.F(seed: U, transform: ScopedTripleBlock<Int, U, T, U>) = foldIndexed(seed, consume(transform))
 /** Acts as a shortened indexed fold. */
-fun <T,U> Array<T>.G(seed: U, transform: ScopedTripleBlock<Int, U, T, U>) = foldIndexed(seed, consume(transform))
+fun <T,U> Array<T>.F(seed: U, transform: ScopedTripleBlock<Int, U, T, U>) = foldIndexed(seed, consume(transform))
 
 /** Counts each of the distinct items. */
 fun <T> Iterable<T>.c() = groupingBy { it }.eachCount()
@@ -144,3 +124,5 @@ fun <T> Iterable<T>.x(other:Iterable<T> =this) = l.x(other.l)
 fun <T> Sequence<T>.x(other:Sequence<T> =this) = l.x(other.l)
 inline fun <reified T> Array<T>.x(other:Array<T> =this) = l.x(other.l)
 
+infix fun <T> Int.r(item: T): MutableList<T> = (1..this).map { item }.toMutableList()
+infix fun <T> Int.r(item: () -> T): MutableList<T> = (1..this).map { item() }.toMutableList()

@@ -26,6 +26,18 @@ class StringUtilsTest {
         assert(test(s=-2))
             .equalsValue("fdb")
             .assert("Backwards listing broken")
+
+        assert("abc".u)
+            .equalsValue("ABC")
+            .assert("Upper didn't work")
+
+        assert("ABC".l)
+            .equalsValue("abc")
+            .assert("Lower didn't work")
+
+        assert(c("abcabd"))
+            .equalsValue(mapOf('a' to 2, 'b' to 2, 'c' to 1, 'd' to 1))
+            .assert("Count failed")
     }
 
     @Test(expectedExceptions = [(AssertionError::class)])

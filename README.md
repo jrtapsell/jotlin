@@ -18,9 +18,7 @@ According to [this](https://codegolf.meta.stackexchange.com/a/7011/73772), yes.
 
 ## How to run the code
 
-To run code in a file called `test.jt`:
-
-    cat test.jt | docker run --rm -i jrtapsell/jotlin
+    docker run --rm -ti -v "${PWD}":/dir:ro jotlin examples/142243/input.jt
 
 
 ## Documentation
