@@ -5,21 +5,23 @@ import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 import java.io.PrintWriter
 
-class NewAssertion<T>(val value: T) {
-    fun equalsValue(expected: T): Assertion {
-        return Assertion { message -> Assert.assertEquals(value, expected, message) }
+typealias Assertion = (String)->Unit
+class NewAssertion<T>(private val value: T) {
+    private val assertionsList = mutableListOf<Assertion>()
+    fun equalsValue(expected: T): NewAssertion<T> {
+        assertionsList.add { message -> Assert.assertEquals(value, expected, message) }
+        return this
     }
 
-    fun isValue(expected: T): Assertion {
-        return Assertion { message -> Assert.assertSame(value, expected, message)}
+    fun isValue(expected: T): NewAssertion<T> {
+        assertionsList.add { message -> Assert.assertSame(value, expected, message)}
+        return this
     }
+
+    fun assert(message: String) = assertionsList.forEach{it(message)}
 }
 
 fun <T> assert(data: T): NewAssertion<T> = NewAssertion(data)
-
-class Assertion(val action: (String)->Unit) {
-    fun assert(message: String) = action.invoke(message)
-}
 
 fun getStdOut(block: ()->Unit): String {
     val oldOut = System.out

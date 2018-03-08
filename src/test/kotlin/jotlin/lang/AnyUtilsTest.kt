@@ -60,7 +60,7 @@ class AnyUtilsTest {
         val x = 100
         x.W{
             assert(a)
-                .equalsValue(x)
+                .isValue(x)
                 .assert("With gave wrong value")
         }
     }
