@@ -73,7 +73,7 @@ val <T> Iterable<T>.l
 val <T> Sequence<T>.l
     get() = toMutableList()
 /** Converts to a mutable list. */
-inline val <reified T> Array<T>.l
+val <T> Array<T>.l
     get() = toMutableList()
 
 /** Generates a sequence. */
@@ -126,3 +126,7 @@ inline fun <reified T> Array<T>.x(other:Array<T> =this) = l.x(other.l)
 
 infix fun <T> Int.r(item: T): MutableList<T> = (1..this).map { item }.toMutableList()
 infix fun <T> Int.r(item: () -> T): MutableList<T> = (1..this).map { item() }.toMutableList()
+
+fun <T> Iterable<T>.C(size: Int) = chunked(size)
+fun <T> Sequence<T>.C(size: Int) = chunked(size)
+fun <T> Array<T>.C(size: Int) = l.chunked(size)

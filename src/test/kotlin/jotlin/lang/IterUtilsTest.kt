@@ -71,4 +71,12 @@ class IterUtilsTest {
             .equalsValue(100)
             .assert("Total is not 100")
     }
+
+    @Test
+    fun C() {
+        val items = l(1,2,3,4,5)
+        assert(items.C(2))
+            .equalsValue(l(l(1,2), l(3,4), l(5)))
+            .assert("Chunked gave wrong answers")
+    }
 }
