@@ -79,4 +79,13 @@ class IterUtilsTest {
             .equalsValue(l(l(1,2), l(3,4), l(5)))
             .assert("Chunked gave wrong answers")
     }
+
+    @Test
+    fun e() {
+        var total = 0
+        (0..4).e{total+=b}
+        assert(total)
+            .equalsValue(10)
+            .assert("For each failed")
+    }
 }

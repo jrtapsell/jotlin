@@ -125,8 +125,12 @@ fun <T> Sequence<T>.x(other:Sequence<T> =this) = l.x(other.l)
 inline fun <reified T> Array<T>.x(other:Array<T> =this) = l.x(other.l)
 
 infix fun <T> Int.r(item: T): MutableList<T> = (1..this).map { item }.toMutableList()
-infix fun <T> Int.r(item: () -> T): MutableList<T> = (1..this).map { item() }.toMutableList()
+infix fun <T> Int.r(item: ScopedMonoBlock<Int, T>): MutableList<T> = (1..this).map { consume(item)(it) }.toMutableList()
 
 fun <T> Iterable<T>.C(size: Int) = chunked(size)
 fun <T> Sequence<T>.C(size: Int) = chunked(size)
 fun <T> Array<T>.C(size: Int) = l.chunked(size)
+
+fun <T> Iterable<T>.e(block: ScopedDualBlock<Int, T, Unit>) = forEachIndexed(consume(block))
+fun <T> Sequence<T>.e(block: ScopedDualBlock<Int, T, Unit>) = forEachIndexed(consume(block))
+fun <T> Array<T>.e(block: ScopedDualBlock<Int, T, Unit>) = forEachIndexed(consume(block))
