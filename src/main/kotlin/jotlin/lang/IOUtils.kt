@@ -21,10 +21,10 @@ fun d(input: String): String {
     deflater.setInput(Base64.getDecoder().decode(input))
     val buffer = ByteArray(1024)
     val outputStream = ByteArrayOutputStream()
-    while (!deflater.finished()) {
+    do {
         val count = deflater.inflate(buffer)
         outputStream.write(buffer, 0, count)
-    }
+    } while (count != 0)
     val temp = outputStream.toByteArray()
     return String(temp)
 }

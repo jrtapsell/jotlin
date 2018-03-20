@@ -1,0 +1,18 @@
+data class Test(val input: String, val output: String)
+
+val test = listOf(
+        Test("hi.txt", "txt"),
+        Test("carrot.meme", "meme"),
+        Test("what..is..this..file", "file"),
+        Test(".bashrc", "bashrc"),
+        Test("T00M@n3KaPZ.h0wC[]h", "h0wC[]h"),
+        Test("agent.000", "000")
+)
+
+fun String.f() = split(".").last()
+
+for ((i, o) in test) {
+    if (o != i.f()) {
+        throw AssertionError()
+    }
+}
