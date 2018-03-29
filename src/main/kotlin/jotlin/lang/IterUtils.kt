@@ -6,6 +6,7 @@ import jotlin.lang.utils.ScopedDualBlock
 import jotlin.lang.utils.ScopedMonoBlock
 import jotlin.lang.utils.ScopedTripleBlock
 import jotlin.lang.utils.consume
+import jotlin.lang.utils.not
 
 typealias L<T> = MutableList<T>
 
@@ -22,6 +23,27 @@ infix fun <T> Iterable<T>.f(transform: ScopedDualBlock<Int, T, Boolean>) = filte
 infix fun <T> Sequence<T>.f(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform))
 /** Acts as a shortened indexed filter. */
 infix fun <T> Array<T>.f(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform))
+
+/** Filters for a certain value. */
+infix fun <T> Iterable<T>.f(value: T) = filter { value == it }
+/** Filters for a certain value. */
+infix fun <T> Sequence<T>.f(value: T) = filter { value == it }
+/** Filters for a certain value. */
+infix fun <T> Array<T>.f(value: T) = filter { value == it }
+
+/** Acts as a shortened inverted indexed filter. */
+infix fun <T> Iterable<T>.n(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform).not)
+/** Acts as a shortened inverted indexed filter. */
+infix fun <T> Sequence<T>.n(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform).not)
+/** Acts as a shortened inverted indexed filter. */
+infix fun <T> Array<T>.n(transform: ScopedDualBlock<Int, T, Boolean>) = filterIndexed(consume(transform).not)
+
+/** Filters for not a certain value. */
+infix fun <T> Iterable<T>.n(value: T) = filter { value != it }
+/** Filters for not a certain value. */
+infix fun <T> Sequence<T>.n(value: T) = filter { value != it }
+/** Filters for not a certain value. */
+infix fun <T> Array<T>.n(value: T) = filter { value != it }
 
 /** Acts as a shortened indexed fold. */
 fun <T,U> Iterable<T>.F(seed: U, transform: ScopedTripleBlock<Int, U, T, U>) = foldIndexed(seed, consume(transform))
