@@ -40,6 +40,8 @@ fun Int.s(radix: Int=10) = toString(radix)
  */
 fun Long.s(radix: Int=10) = toString(radix)
 
-fun <T,U> T.l(block:ScopedMonoBlock<T, U>) = let(consume(block))
+fun <T,U> T.w(block:ScopedMonoBlock<T, U>) = let(consume(block))
 
-fun <T, U> U.W(block: ScopedMonoBlock<U, T>) = consume(block)(this)
+infix fun <T, U> T.t(other: U) = this to other
+infix fun <T, U, V> Pair<T, U>.t(other: V) = Triple(this.first, this.second, other)
+infix fun <T, U, V> T.t(other: Pair<U, V>) = Triple(this, other.first, other.second)

@@ -46,19 +46,9 @@ class AnyUtilsTest {
     }
 
     @Test
-    fun l() {
-        var x=0
-        val i = 100
-        i.l { x = a }
-        assert(x)
-            .equalsValue(100)
-            .assert("Let did not work")
-    }
-
-    @Test
-    fun W() {
+    fun w() {
         val x = 100
-        x.W{
+        x.w{
             assert(a)
                 .isValue(x)
                 .assert("With gave wrong value")

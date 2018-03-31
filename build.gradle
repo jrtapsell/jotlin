@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.2.21'
+    ext.kotlin_version = '1.2.31'
 
     repositories {
         mavenCentral()
@@ -7,6 +7,10 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
+}
+
+plugins {
+    id "com.github.johnrengelman.shadow" version "2.0.3"
 }
 
 group "uk.co.jrtapsell"
@@ -19,12 +23,18 @@ sourceCompatibility = 1.9
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://dl.bintray.com/kotlin/kotlin-dev/"
+    }
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-compiler:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-script-runtime:$kotlin_version"
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-script-util', version: kotlin_version
     testCompile group: 'org.testng', name: 'testng', version: '6.13.1'
-
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-jsr223-local-example', version: '1.1-M04-eap-14'
 }
 
 compileKotlin {
@@ -36,5 +46,12 @@ compileTestKotlin {
 test {
     useTestNG {
         suites 'src/test/testng.xml'
+    }
+}
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                'Implementation-Version': version,
+                'Main-Class': 'jotlin.runner.EntryPoint'
     }
 }

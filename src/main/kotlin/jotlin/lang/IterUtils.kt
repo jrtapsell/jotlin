@@ -156,3 +156,7 @@ fun <T> Array<T>.C(size: Int) = l.chunked(size)
 fun <T> Iterable<T>.e(block: ScopedDualBlock<Int, T, Unit>) = forEachIndexed(consume(block))
 fun <T> Sequence<T>.e(block: ScopedDualBlock<Int, T, Unit>) = forEachIndexed(consume(block))
 fun <T> Array<T>.e(block: ScopedDualBlock<Int, T, Unit>) = forEachIndexed(consume(block))
+
+fun <T> Iterable<T>.z(other: Iterable<T>) = zip(other)
+fun <T> Sequence<T>.z(other: Sequence<T>) = zip(other)
+fun <T> Array<T>.z(other: Array<T>) = zip(other)
