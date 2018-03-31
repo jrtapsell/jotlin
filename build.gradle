@@ -57,3 +57,10 @@ jar {
     }
 }
 test.finalizedBy jacocoTestReport
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+    }
+}
