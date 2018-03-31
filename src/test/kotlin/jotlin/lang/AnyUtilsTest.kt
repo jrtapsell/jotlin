@@ -54,4 +54,24 @@ class AnyUtilsTest {
                 .assert("With gave wrong value")
         }
     }
+
+    @Test
+    fun t() {
+        val firstPair = 1 t 2
+        val secondPair = 2 t 3
+        assert(firstPair)
+            .equalsValue(1 to 2)
+            .assert("Pair creation failed")
+
+        val firstTriple = firstPair t 3
+        val secondTriple = 1 t secondPair
+
+        assert(firstTriple)
+            .equalsValue(Triple(1,2,3))
+            .assert("End triple failed")
+
+        assert(secondTriple)
+            .equalsValue(Triple(1,2,3))
+            .assert("Start triple failed")
+    }
 }
