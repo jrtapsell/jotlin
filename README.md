@@ -1,4 +1,5 @@
 # Jotlin
+[![Build Status](https://travis-ci.org/jrtapsell/jotlin.svg?branch=master)](https://travis-ci.org/jrtapsell/jotlin)  [![Coverage Status](https://coveralls.io/repos/github/jrtapsell/jotlin/badge.svg?branch=master)](https://coveralls.io/github/jrtapsell/jotlin?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4dd3ac3dcf7c4d33bbdc4e5911ca41c7)](https://www.codacy.com/app/jrtapsell/jotlin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jrtapsell/jotlin&amp;utm_campaign=Badge_Grade)
 
 ## Why call it Jotlin
 
