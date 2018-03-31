@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - oraclejdk9
+  - oraclejdk8
 # https://github.com/codacy/codacy-coverage-reporter#travis-ci
 before_install:
   - sudo apt-get install jq
