@@ -88,4 +88,28 @@ class IterUtilsTest {
             .equalsValue(10)
             .assert("For each failed")
     }
+
+    @Test
+    fun n() {
+        val list = l(1,2,3,4,1,2)
+        val no1 = l(2, 3, 4, 2)
+        assert(list.n(1))
+            .equalsValue(no1)
+            .assert("Not doesn't work")
+        assert(list.n{b == 1})
+            .equalsValue(no1)
+            .assert("Not doesn't work")
+    }
+
+    @Test
+    fun f() {
+        val list = l(1,2,3,4,1,2)
+        val no1 = l(1,1)
+        assert(list.f(1))
+            .equalsValue(no1)
+            .assert("Not doesn't work")
+        assert(list.f{b == 1})
+            .equalsValue(no1)
+            .assert("Not doesn't work")
+    }
 }
