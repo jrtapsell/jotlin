@@ -12,11 +12,12 @@ buildscript {
 plugins {
     id "com.github.johnrengelman.shadow" version "2.0.3"
     id 'com.github.kt3k.coveralls' version '2.6.3'
+    id 'net.saliman.cobertura' version '2.5.4'
 }
 apply plugin: "jacoco"
 
 group "uk.co.jrtapsell"
-version "1.0-SNAPSHOT"
+version "1.0"
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -37,7 +38,28 @@ dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-script-util', version: kotlin_version
     testCompile group: 'org.testng', name: 'testng', version: '6.13.1'
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-jsr223-local-example', version: '1.1-M04-eap-14'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.+"
 }
+
+// https://gist.github.com/JonasGroeger/7620911
+def getCheckedOutGitCommitHash() {
+    def gitFolder = "$projectDir/.git/"
+    /*
+     * '.git/HEAD' contains either
+     *      in case of detached head: the currently checked out commit hash
+     *      otherwise: a reference to a file containing the current commit hash
+     */
+    def head = new File(gitFolder + "HEAD").text.split(":") // .git/HEAD
+    def isCommit = head.length == 1 // e5a7c79edabbf7dd39888442df081b1c9d8e88fd
+    // def isRef = head.length > 1     // ref: refs/heads/master
+
+    if (isCommit) return head[0].trim() // e5a7c79edabb
+
+    def refHead = new File(gitFolder + head[1].trim()) // .git/refs/heads/master
+    refHead.text.trim()
+}
+
 
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
@@ -55,7 +77,8 @@ jar {
     manifest {
         attributes 'Implementation-Title': 'Gradle Quickstart',
                 'Implementation-Version': version,
-                'Main-Class': 'jotlin.runner.EntryPoint'
+                'Main-Class': 'jotlin.runner.EntryPoint',
+                'Specification-Version': getCheckedOutGitCommitHash()
     }
 }
 
@@ -68,4 +91,8 @@ jacocoTestReport {
 
 coveralls {
     sourceDirs = ['src/main/kotlin']
+}
+
+cobertura {
+    coverageSourceDirs = ['src/main/kotlin']
 }

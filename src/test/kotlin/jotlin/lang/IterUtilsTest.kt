@@ -25,8 +25,8 @@ class IterUtilsTest {
 
     @Test
     fun w() {
-        assert(l(1,2,3,4,5).w(3))
-            .equalsValue(l(l(1,2,3), l(2,3,4), l(3,4,5)))
+        assert(L(1,2,3,4,5).w(3))
+            .equalsValue(L(L(1,2,3), L(2,3,4), L(3,4,5)))
             .assert("Testing window function")
     }
 
@@ -40,15 +40,15 @@ class IterUtilsTest {
 
     @Test
     fun M() {
-        val m = l("a", "b", "c").m { "$a$b" }
+        val m = L("a", "b", "c").m { "$a$b" }
         assert(m)
-            .equalsValue(l("0a", "1b", "2c"))
+            .equalsValue(L("0a", "1b", "2c"))
             .assert("Map indexed failed")
     }
 
     @Test
     fun a() {
-        val list = l(1,2,3,4)
+        val list = L(1,2,3,4)
         val array = a(1,2,3,4)
 
         val iterable = list.asIterable()
@@ -74,9 +74,9 @@ class IterUtilsTest {
 
     @Test
     fun C() {
-        val items = l(1,2,3,4,5)
+        val items = L(1,2,3,4,5)
         assert(items.C(2))
-            .equalsValue(l(l(1,2), l(3,4), l(5)))
+            .equalsValue(L(L(1,2), L(3,4), L(5)))
             .assert("Chunked gave wrong answers")
     }
 
@@ -91,8 +91,8 @@ class IterUtilsTest {
 
     @Test
     fun n() {
-        val list = l(1,2,3,4,1,2)
-        val no1 = l(2, 3, 4, 2)
+        val list = L(1,2,3,4,1,2)
+        val no1 = L(2, 3, 4, 2)
         assert(list.n(1))
             .equalsValue(no1)
             .assert("Not doesn't work")
@@ -103,8 +103,8 @@ class IterUtilsTest {
 
     @Test
     fun f() {
-        val list = l(1,2,3,4,1,2)
-        val no1 = l(1,1)
+        val list = L(1,2,3,4,1,2)
+        val no1 = L(1,1)
         assert(list.f(1))
             .equalsValue(no1)
             .assert("Not doesn't work")

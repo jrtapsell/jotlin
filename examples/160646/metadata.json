@@ -1,0 +1,5 @@
+{
+  "type": "fixed",
+  "body": "input.jt",
+  "output": "output.txt"
+}

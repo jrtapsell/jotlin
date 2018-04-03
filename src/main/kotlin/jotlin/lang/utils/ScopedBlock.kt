@@ -1,3 +1,5 @@
+@file:Suppress("unused","FunctionName")
+
 package jotlin.lang.utils
 
 typealias ScopedMonoBlock<T, Z> = ScopedMonoContext<T>.(T)->Z

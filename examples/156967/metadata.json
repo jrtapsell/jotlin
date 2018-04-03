@@ -1,0 +1,8 @@
+{
+  "type": "battery",
+  "header": "header.jt",
+  "body": "input.jt",
+  "data": "data.json",
+  "testFunction": "f(r.input0)",
+  "types": {"in": ["String"], "out": "Boolean"}
+}

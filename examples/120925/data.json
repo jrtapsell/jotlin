@@ -1,0 +1,8 @@
+[
+  {"in":["hi.txt"], "out":"txt"}, 
+  {"in":["carrot.meme"], "out":"meme"},
+  {"in":["what..is..this..file"], "out":"file"},
+  {"in":[".bashrc"], "out":"bashrc"},
+  {"in":["T00M@n3KaPZ.h0wC[]h"], "out":"h0wC[]h"},
+  {"in":["agent.000"], "out":"000"}
+]

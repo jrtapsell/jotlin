@@ -1,0 +1,8 @@
+{
+  "type": "battery",
+  "header": "header.jt",
+  "body": "input.jt",
+  "data": "data.json",
+  "testFunction": "x(r.input0)",
+  "types": {"in": ["Int"], "out": "Char"}
+}

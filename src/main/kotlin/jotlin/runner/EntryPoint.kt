@@ -5,15 +5,7 @@ import kotlin.system.exitProcess
 interface ModeHandler {
     fun validate(args: List<String>): Boolean
     fun run(args: List<String>)
-}
-enum class Mode(val handler: ModeHandler) {
-    RUN(Run),
-    POST(Post);
-
-    companion object {
-        val safeValues = values()
-            .associate { it.name.toLowerCase() to it }
-    }
+    val description: String
 }
 
 object EntryPoint {
@@ -27,13 +19,7 @@ object EntryPoint {
             ?.handler
 
         if (instruction == null) {
-            System.err.println("""
-                | Mode needs to be provided:
-                | RUN:
-                |   Runs a file
-                | POST:
-                |   Creates a post
-                """.trimMargin())
+            System.err.println("Mode needs to be provided, or use help to get description")
             exitProcess(1)
         }
 
@@ -41,6 +27,8 @@ object EntryPoint {
 
         if (instruction.validate(handlerArgs)) {
             instruction.run(handlerArgs)
+        } else {
+            System.err.println("Bad command")
         }
     }
 }

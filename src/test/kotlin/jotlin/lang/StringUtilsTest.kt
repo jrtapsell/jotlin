@@ -27,11 +27,11 @@ class StringUtilsTest {
             .equalsValue("fdb")
             .assert("Backwards listing broken")
 
-        assert("abc".u)
+        assert("abc".U)
             .equalsValue("ABC")
             .assert("Upper didn't work")
 
-        assert("ABC".l)
+        assert("ABC".L)
             .equalsValue("abc")
             .assert("Lower didn't work")
 

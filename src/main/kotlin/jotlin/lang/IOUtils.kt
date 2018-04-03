@@ -1,3 +1,5 @@
+@file:Suppress("unused","FunctionName")
+
 package jotlin.lang
 
 import java.util.Base64

@@ -1,0 +1,11 @@
+[
+  {"in":["aaaa"], "out":true},
+  {"in":["aa!1 1 !a !1"], "out":true},
+  {"in":["aabbccddeeffgg"], "out":true},
+  {"in":["1Q!V_fSiA6Bri{|}tkDM]VjNJ=^_4(a&=?5oYa,1wh|R4YKU #9c!#Q T&f`:sm$@Xv-ugW<P)l}WP>F'jl3xmd'9Ie$MN;TrCBC/tZIL*G27byEn.g0kKhbR%>G-.5pHcL0)JZ`s:*[x2Sz68%v^Ho8+[e,{OAqn?3E<OFwX(;@yu]+z7/pdqUD"], "out":true},
+  {"in":["{c(it).map({(_,ebb)->ebb}).l{a.none({icmp_2->icmp_2<2||icmp_2!=a[0]||\",,,-->>llnnoooaettt<<<!!=[[[000!]]]\".l==\"\"})}}"], "out":true},
+  {"in":["a"], "out":false},
+  {"in":["abbaabb"], "out":false},
+  {"in":["abc"], "out":false},
+  {"in":["bQf6ScA5d:4_aJ)D]2*^Mv(E}Kb7o@]krevW?eT0FW;I|J:ix %9!3Fwm;*UZGH`8tV>gy1xX<S/OA7NtB'}c u'V$L,YlYp{#[..j&gTk8jp-6RlGUL#_<^0CCZKPQfD2%s)he-BMRu1n?qdi/!5q=wn$ora+X,POzzHNh=(4{m`39I|s[+E@&y>"], "out":false}
+]
