@@ -22,10 +22,10 @@ According to [this](https://codegolf.meta.stackexchange.com/a/7011/73772), yes.
 There are multiple ways to run the Jotlin runtime
 
 ### Using docker
-    docker run --rm -ti -v "${PWD}":/dir:ro jrtapsell/jotlin examples/142243/input.jt
+    docker run --rm -ti -v "${PWD}":/dir:ro jrtapsell/jotlin run examples/142243/metadata.json
 
 ### Using the jar
-    java -jar jotlin.jar run examples/142243/input.jt
+    java -jar jotlin.jar run examples/142243/metadata.json
 
 ## Documentation
 
