@@ -2,13 +2,13 @@
 
 package jotlin.lang
 
-typealias L<T> = MutableList<T>
-typealias A<T> = Array<T>
+typealias TL<T> = MutableList<T>
+typealias TA<T> = Array<T>
 
-typealias i = Int
-typealias s = String
-typealias l = Long
+typealias Ti = Int
+typealias Ts = String
+typealias Tl = Long
 
-typealias C<T> = ()->T
+typealias TC<T> = ()->T
 
 val D = "$"
